@@ -13,14 +13,14 @@ pipeline {
  
 
 
-          stage('BUILDING DOCKER IMAGE') {
-            steps {
-                sh "ls"
-                sh "docker build -t $appRegistry:$BUILD_NUMBER -t $appRegistry:latest ."
-                // sh "docker tag new999:$BUILD_NUMBER rahulshri0703/new999:$BUILD_NUMBER"
-            }
+        //   stage('BUILDING DOCKER IMAGE') {
+        //     steps {
+        //         sh "ls"
+        //         sh "docker build -t $appRegistry:$BUILD_NUMBER -t $appRegistry:latest ."
+        //         // sh "docker tag new999:$BUILD_NUMBER rahulshri0703/new999:$BUILD_NUMBER"
+        //     }
         
-        }
+        // }
 
         // create a docker_credentials in Dashboard>Manage Jenkins>Credentials>System>Global credentials (unrestricted)
 
@@ -58,6 +58,18 @@ pipeline {
         //     }
         //     }
         // }
+
+
+        stage('Build App Image') {
+       steps {
+       
+         script {
+                dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER", ".")
+             }
+
+     }
+    
+    }
 
 
          stage('Upload App Image') {
