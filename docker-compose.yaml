@@ -1,0 +1,24 @@
+version: "1"
+services: 
+  apper:
+    image: rahulshri0703/mysummer
+    ports:
+      - 3000:3000
+    volumes:
+      - /mnt/c/Users/rs070/OneDrive/Documents/LearnPython/aws/app:/app
+    networks:
+      - mynetwork  #pre-existing network
+      - newnet     #new network
+
+    environment:
+      - FLASK_DEBUG=true
+    
+    
+
+networks:
+  mynetwork:
+    name: mynetwork
+    external: true
+
+  newnet:
+    driver: bridge
