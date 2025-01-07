@@ -5,19 +5,33 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
-            steps {
 
-               withCredentials([[$class: 'UsernamePasswordMultiBinding', 
-                                credentialsId: 'awsCred',
-                                 usernameVariable: 'AWS_ACCESS_KEY_ID',
-                                  passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) 
-                                        {
+        // stage('Hello') {
+        //     steps {
+
+        //        withCredentials([[$class: 'UsernamePasswordMultiBinding', 
+        //                         credentialsId: 'awsCred',
+        //                          usernameVariable: 'AWS_ACCESS_KEY_ID',
+        //                           passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) 
+        //                                 {
                                 
-                                            sh "aws s3 ls"
+        //                                     sh "aws s3 ls"
                                             
-                                        }
-            }
+        //                                 }
+        //     }
+        // }
+
+    stage('test aws') {
+          steps {
+        withAWS(credentials: 'awsPluginCred', region: 'us-east-1') {
+          sh 'aws s3 ls'
         }
+      }
+     }
+
+
+
+
+
     }
 }
