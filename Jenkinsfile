@@ -6,7 +6,7 @@ pipeline {
 
         appRegistry = "060795944326.dkr.ecr.us-east-1.amazonaws.com/myrepo33"
         vprofileRegistry ="http://060795944326.dkr.ecr.us-east-1.amazonaws.com"
-        registryCredential = 'awsCred' 
+        registryCredential = 'awsProfileCred' 
     }
 
      stages {
