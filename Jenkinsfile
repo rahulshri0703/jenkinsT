@@ -68,6 +68,7 @@ pipeline {
 
 
         stage('Build App Image') {
+            agent { label 'KOPS' }
        steps {
        
          script {
@@ -80,6 +81,7 @@ pipeline {
 
 
          stage('Upload App Image') {
+            agent { label 'KOPS' }
           steps{
             script {
               docker.withRegistry( vprofileRegistry, registryCredential ) {
