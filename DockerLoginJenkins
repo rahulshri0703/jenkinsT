@@ -4,6 +4,7 @@ pipeline{
 
       environment {
     docker_cred = credentials('dockerCred')
+    //  create a cred in Dashboard : Manage Jenkins>Credentials>System>Global credentials (unrestricted)
     
     }
 

@@ -11,6 +11,7 @@ pipeline {
 
                withCredentials([[$class: 'UsernamePasswordMultiBinding', 
                                 credentialsId: 'awsCred',
+                                //  create a cred in Dashboard : Manage Jenkins>Credentials>System>Global credentials (unrestricted)
                                  usernameVariable: 'AWS_ACCESS_KEY_ID',
                                   passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) 
                                         {
@@ -24,6 +25,7 @@ pipeline {
     // stage('test aws') {
     //       steps {
     //     withAWS(credentials: 'awsPluginCred', region: 'us-east-1') {
+    // //  create a cred in Dashboard : Manage Jenkins>Credentials>System>Global credentials (unrestricted) with AWS credential
     //       sh 'aws s3 ls'
     //       sh "echo 3672"
     //     }
