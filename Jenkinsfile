@@ -9,7 +9,7 @@ pipeline {
             steps {
 
                withCredentials([[$class: 'UsernamePasswordMultiBinding', 
-                                credentialsId: 'aws-cred',
+                                credentialsId: 'awsCred',
                                  usernameVariable: 'AWS_ACCESS_KEY_ID',
                                   passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) 
                                         {
