@@ -47,11 +47,27 @@ pipeline{
     //         }
     //     }
 
-        stage("docker-login2") {
+        // stage("docker-login2") {
+        //     steps {
+        //      withCredentials([usernamePassword(credentialsId: 'dockerCred', 
+        //                             passwordVariable: 'DOCKER_REGISTRY_PWD', 
+        //                             usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+        //         sh "docker login -u ${DOCKER_REGISTRY_USER} -p ${DOCKER_REGISTRY_PWD}"
+        //         sh "echo success9999"
+
+        //      }
+        // }
+
+
+         stage("docker-login3") {
             steps {
-             withCredentials([usernamePassword(credentialsId: 'dockerCred', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
+              withCredentials([[$class: 'UsernamePasswordMultiBinding', 
+                                credentialsId: 'dockerCred',
+                                 usernameVariable: 'DOCKER_REGISTRY_USER',
+                                  passwordVariable: 'DOCKER_REGISTRY_PWD']]) 
+              {
                 sh "docker login -u ${DOCKER_REGISTRY_USER} -p ${DOCKER_REGISTRY_PWD}"
-                sh "echo success9999"
+                sh "echo success34567"
 
              }
         }
