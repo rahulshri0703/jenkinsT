@@ -32,7 +32,7 @@ pipeline {
 
     stage("aws-login2") {
             steps {
-             withCredentials([usernamePassword(credentialsId: 'awsCred', 
+             withCredentials([UsernamePasswordMultiBinding(credentialsId: 'awsCred', 
                                     passwordVariable: 'AWS_ACCESS_KEY_ID', 
                                     usernameVariable: 'AWS_SECRET_ACCESS_KEY')]) {
 
