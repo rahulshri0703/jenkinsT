@@ -7,8 +7,9 @@ pipeline {
         appRegistry = "060795944326.dkr.ecr.us-east-1.amazonaws.com/myrepo33"
         vprofileRegistry ="http://060795944326.dkr.ecr.us-east-1.amazonaws.com"
         registryCredential = "ecr:us-east-1:awsPluginCred"
-        // 'ecrPass'  
-        //  create a cred in Dashboard : Manage Jenkins>Credentials>System>Global credentials (unrestricted)
+        // awsPluginCred is AWS credential using Manage>Jenkins>Credentials>System>Global credentials (unrestricted)>AWS credential
+        // registryCredential = 'ecrPass'  
+        //  create a cred in Dashboard : Manage>Jenkins>Credentials>System>Global credentials (unrestricted)
 
         // username = AWS
         // password = get password using: aws ecr get-login-password
