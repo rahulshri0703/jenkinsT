@@ -25,6 +25,7 @@ pipeline {
           steps {
         withAWS(credentials: 'awsPluginCred', region: 'us-east-1') {
           sh 'aws s3 ls'
+          sh "echo 3672"
         }
       }
      }
