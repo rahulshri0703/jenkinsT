@@ -48,11 +48,13 @@ pipeline{
     //     }
 
         stage("docker-login2") {
+            steps {
              withCredentials([usernamePassword(credentialsId: 'dockerCred', passwordVariable: 'DOCKER_REGISTRY_PWD', usernameVariable: 'DOCKER_REGISTRY_USER')]) {
                 sh "docker login -u ${DOCKER_REGISTRY_USER} -p ${DOCKER_REGISTRY_PWD}"
                 sh "echo success9999"
 
              }
+        }
         }
 
     
