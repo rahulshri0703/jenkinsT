@@ -45,7 +45,7 @@ pipeline {
        unsuccessful {
         sh " echo 'this is a unsuccessful'"
       }
-       abort {
+       aborted {
         sh " echo 'abort'"
       }
         always {
