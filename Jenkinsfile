@@ -35,7 +35,7 @@ pipeline {
 
      }
      post {
-      failure {
+      fail {
         sh " this is a failure"
       }
      }
