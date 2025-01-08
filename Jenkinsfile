@@ -20,11 +20,11 @@ pipeline {
      }
      post {
       success {
-        sh " this is a success"
+        sh "echo 'this is a success'"
       }
 
       always {
-        sh "666"
+        sh "echo 666"
       }
      }
     
