@@ -2,7 +2,7 @@ def COLOR_MAP = [
     'SUCCESS': 'good',
     'FAILURE': 'danger',
 ]
-
+// valid conditions are [always, changed, fixed, regression, aborted, success, unsuccessful, unstable, failure, notBuilt, cleanup]
 pipeline {
     
     agent any
@@ -22,6 +22,10 @@ pipeline {
       success {
         sh " this is a success"
       }
+
+      always {
+        sh "666"
+      }
      }
     
     }
@@ -35,9 +39,19 @@ pipeline {
 
      }
      post {
-      fail {
-        sh " this is a failure"
+      failure {
+        sh "echo  'this is a failure'"
       }
+       unsuccessful {
+        sh " echo 'this is a unsuccessful'"
+      }
+       abort {
+        sh " echo 'abort'"
+      }
+        always {
+        sh "77"
+      }
+
      }
      }
 
