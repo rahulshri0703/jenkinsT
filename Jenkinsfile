@@ -1,3 +1,8 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good',
+    'FAILURE': 'danger',
+]
+
 pipeline {
     
     agent any
@@ -68,7 +73,7 @@ pipeline {
 
 
         stage('Build App Image') {
-            agent { label 'KOPS' }
+            // agent { label 'KOPS' }
        steps {
        
          script {
@@ -81,7 +86,7 @@ pipeline {
 
 
          stage('Upload App Image') {
-            agent { label 'KOPS' }
+            // agent { label 'KOPS' }
           steps{
             script {
               docker.withRegistry( vprofileRegistry, registryCredential ) {
@@ -95,4 +100,15 @@ pipeline {
 
 
      }
+
+   post {
+        always {
+            echo "slack notification"
+            slackSend channel: '#jenkinstrial', // channel name
+                color: COLOR_MAP[currentBuild.currentResult],
+                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at ${env.BUILD_URL}"
+
+        }
+    }
+
 }
